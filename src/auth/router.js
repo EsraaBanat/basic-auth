@@ -5,8 +5,10 @@ const bcrypt=require('bcrypt');
 const userRouter = express.Router();
 const basicAuthentication = require("../auth/middleware/basic");
 
+
+userRouter.get('/',home); 
 // Signup Route -- create a new user
-userRouter.post('/signup',signUp);
+userRouter.post('/signup',signUp); 
 
 // Signin Route -- login with username and password
 userRouter.post('/signin',basicAuthentication(Users),signIn );
@@ -14,6 +16,10 @@ userRouter.post('/signin',basicAuthentication(Users),signIn );
 
 
 // Functions :
+
+function home(req, res) {
+  res.status(200).send('Hello Its my basic server to practice authentication');
+}
 
 async function signUp (req, res)  {
 
